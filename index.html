@@ -37,7 +37,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: DM Sans, sans-serif;
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;
@@ -64,13 +64,13 @@ header { padding: 22px 0 18px; border-bottom: 1px solid var(--border); margin-bo
 .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
 .logo { display: flex; align-items: center; gap: 11px; }
 .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--amber), var(--terra)); border-radius: 9px; display: grid; place-items: center; font-size: 17px; }
-h1 { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; letter-spacing: -.2px; line-height: 1.2; color: var(--ink); }
+h1 { font-family: Fraunces, serif; font-size: 21px; font-weight: 600; letter-spacing: -.2px; line-height: 1.2; color: var(--ink); }
 h1 span { color: var(--amber); font-style: italic; }
-.subtitle { font-family: 'Geist Mono', monospace; font-size: 10.5px; color: var(--ink2); margin-top: 2px; }
+.subtitle { font-family: Geist Mono, monospace; font-size: 10.5px; color: var(--ink2); margin-top: 2px; }
 
 /* ── TABS ── */
 .tabs { display: flex; gap: 2px; background: var(--surface2); border-radius: 9px; padding: 3px; border: 1px solid var(--border); }
-.tab { padding: 7px 20px; border-radius: 6px; font-size: 13.5px; font-weight: 500; cursor: pointer; transition: all .15s; color: var(--ink2); border: none; background: none; font-family: 'DM Sans', sans-serif; }
+.tab { padding: 7px 20px; border-radius: 6px; font-size: 13.5px; font-weight: 500; cursor: pointer; transition: all .15s; color: var(--ink2); border: none; background: none; font-family: DM Sans, sans-serif; }
 .tab.active { background: var(--amber); color: #1a1208; font-weight: 600; box-shadow: 0 1px 6px rgba(201,144,58,.35); }
 .panel { display: none; } .panel.active { display: block; }
 
@@ -80,7 +80,7 @@ h1 span { color: var(--amber); font-style: italic; }
   flex: 1; min-width: 200px;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r); padding: 8px 14px;
-  color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: var(--ink); font-family: DM Sans, sans-serif; font-size: 14px;
   outline: none; transition: border-color .15s;
 }
 .search-box:focus { border-color: var(--amber); }
@@ -88,11 +88,11 @@ h1 span { color: var(--amber); font-style: italic; }
 .filter-select {
   padding: 8px 12px; border-radius: var(--r); font-size: 13px; font-weight: 500;
   border: 1px solid var(--border); background: var(--surface);
-  color: var(--ink2); font-family: 'DM Sans', sans-serif;
+  color: var(--ink2); font-family: DM Sans, sans-serif;
   cursor: pointer; outline: none; transition: border-color .15s, color .15s;
 }
 .filter-select:focus, .filter-select:hover { border-color: var(--amber); color: var(--ink); }
-.results-count { font-family: 'Geist Mono', monospace; font-size: 10.5px; color: var(--ink3); white-space: nowrap; }
+.results-count { font-family: Geist Mono, monospace; font-size: 10.5px; color: var(--ink3); white-space: nowrap; }
 
 /* ── PROGRESS ── */
 .progress-bar-container {
@@ -100,10 +100,10 @@ h1 span { color: var(--amber); font-style: italic; }
   border-radius: var(--r); padding: 12px 20px; margin-bottom: 16px;
   display: flex; align-items: center; gap: 16px;
 }
-.progress-label { font-family: 'Geist Mono', monospace; font-size: 10.5px; color: var(--ink2); white-space: nowrap; }
+.progress-label { font-family: Geist Mono, monospace; font-size: 10.5px; color: var(--ink2); white-space: nowrap; }
 .progress-track { flex: 1; height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--amber), var(--terra)); border-radius: 99px; transition: width .5s ease; }
-.progress-count { font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500; white-space: nowrap; color: var(--ink); }
+.progress-count { font-family: Geist Mono, monospace; font-size: 13px; font-weight: 500; white-space: nowrap; color: var(--ink); }
 
 /* ── CLIENT GRID ── */
 .client-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 9px; margin-bottom: 28px; }
@@ -129,29 +129,29 @@ h1 span { color: var(--amber); font-style: italic; }
 .client-card.hidden { display: none; }
 
 .client-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
-.client-name { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.3; color: var(--ink); }
+.client-name { font-family: DM Sans, sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.3; color: var(--ink); }
 .client-num {
-  font-family: 'Geist Mono', monospace; font-size: 9.5px; color: var(--ink3);
+  font-family: Geist Mono, monospace; font-size: 9.5px; color: var(--ink3);
   background: var(--bg); padding: 1px 7px; border-radius: 99px;
   border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; margin-left: 8px;
 }
-.client-info { font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--ink2); margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.client-info { font-family: Geist Mono, monospace; font-size: 11.5px; color: var(--ink2); margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .client-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--border); }
 
 /* status badges */
-.status-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 99px; font-family: 'Geist Mono', monospace; }
+.status-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 99px; font-family: Geist Mono, monospace; }
 .b-pendiente   { background: rgba(92,84,72,.2);    color: var(--ink2); }
 .b-contestó    { background: var(--sage-dim);  color: var(--sage);  }
 .b-no-contestó { background: var(--rose-dim);  color: var(--rose);  }
 .b-no-respondió{ background: var(--gold-dim);  color: var(--gold);  }
 .b-recuperado  { background: var(--amber-dim); color: var(--amber); }
 .b-rechazó     { background: var(--terra-dim); color: var(--terra); }
-.cart-amount { font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--amber); font-weight: 500; }
+.cart-amount { font-family: Geist Mono, monospace; font-size: 13px; color: var(--amber); font-weight: 500; }
 
 /* products */
 .products-list { margin: 6px 0 8px; display: flex; flex-direction: column; gap: 3px; }
 .product-tag {
-  font-family: 'Geist Mono', monospace; font-size: 11px;
+  font-family: Geist Mono, monospace; font-size: 11px;
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 6px; padding: 4px 8px;
   display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; line-height: 1.4;
@@ -169,12 +169,12 @@ h1 span { color: var(--amber); font-style: italic; }
   box-shadow: 0 24px 64px rgba(0,0,0,.5);
 }
 @keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.modal-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin-bottom: 2px; color: var(--ink); }
+.modal-title { font-family: Fraunces, serif; font-size: 18px; font-weight: 600; margin-bottom: 2px; color: var(--ink); }
 .modal-meta { display: flex; flex-direction: column; gap: 3px; margin-bottom: 16px; }
-.modal-meta span { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--ink2); line-height: 1.6; }
+.modal-meta span { font-family: Geist Mono, monospace; font-size: 12px; color: var(--ink2); line-height: 1.6; }
 .modal-amount { color: var(--amber) !important; font-weight: 500 !important; }
 .form-group { margin-bottom: 14px; }
-label.field-label { display: block; font-size: 10px; font-weight: 600; color: var(--ink3); margin-bottom: 7px; letter-spacing: .6px; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+label.field-label { display: block; font-size: 10px; font-weight: 600; color: var(--ink3); margin-bottom: 7px; letter-spacing: .6px; text-transform: uppercase; font-family: DM Sans, sans-serif; }
 .radio-group { display: flex; flex-direction: column; gap: 5px; }
 .radio-option {
   display: flex; align-items: center; gap: 10px;
@@ -188,7 +188,7 @@ label.field-label { display: block; font-size: 10px; font-weight: 600; color: va
 textarea {
   width: 100%; background: var(--bg); border: 1px solid var(--border);
   border-radius: 8px; padding: 10px 12px; color: var(--ink);
-  font-family: 'DM Sans', sans-serif; font-size: 13px; resize: vertical;
+  font-family: DM Sans, sans-serif; font-size: 13px; resize: vertical;
   outline: none; transition: border-color .15s; line-height: 1.5;
 }
 textarea:focus { border-color: var(--amber); }
@@ -198,7 +198,7 @@ input[type=text], input[type=number] {
 }
 input[type=text]:focus, input[type=number]:focus { border-color: var(--amber) !important; }
 .btn-group { display: flex; gap: 8px; margin-top: 18px; }
-.btn { flex: 1; padding: 10px 14px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; }
+.btn { flex: 1; padding: 10px 14px; border-radius: 8px; font-family: DM Sans, sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; }
 .btn-primary { background: var(--amber); color: #1a1208; box-shadow: 0 2px 8px rgba(201,144,58,.25); }
 .btn-primary:hover { background: #d69e40; box-shadow: 0 4px 14px rgba(201,144,58,.35); }
 .btn-secondary { background: var(--surface2); color: var(--ink2); border: 1px solid var(--border); }
@@ -218,33 +218,33 @@ input[type=text]:focus, input[type=number]:focus { border-color: var(--amber) !i
 .c3::after { background: var(--rose); }  .c4::after { background: var(--gold); }
 .c5::after { background: var(--amber); } .c6::after { background: var(--terra); }
 .stat-label { font-size: 10.5px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
-.stat-value { font-family: 'Geist Mono', monospace; font-size: 32px; font-weight: 400; line-height: 1; margin-bottom: 5px; }
-.stat-sub { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--ink2); }
+.stat-value { font-family: Geist Mono, monospace; font-size: 32px; font-weight: 400; line-height: 1; margin-bottom: 5px; }
+.stat-sub { font-family: Geist Mono, monospace; font-size: 11px; color: var(--ink2); }
 .c1 .stat-value { color: var(--amber); } .c2 .stat-value { color: var(--sage);  }
 .c3 .stat-value { color: var(--rose);  } .c4 .stat-value { color: var(--gold);  }
 .c5 .stat-value { color: var(--amber); } .c6 .stat-value { color: var(--terra); }
-.section-title { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.section-title { font-family: DM Sans, sans-serif; font-size: 10px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
 .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .funnel-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; margin-bottom: 18px; }
 .funnel-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
 .funnel-row:last-child { margin-bottom: 0; }
 .funnel-label { font-size: 11.5px; font-weight: 500; min-width: 130px; color: var(--ink2); }
 .funnel-bar-wrap { flex: 1; height: 20px; background: var(--bg); border-radius: 5px; overflow: hidden; }
-.funnel-bar { height: 100%; border-radius: 5px; transition: width .6s ease; display: flex; align-items: center; padding-left: 10px; font-family: 'Geist Mono', monospace; font-size: 10px; color: rgba(255,255,255,.7); min-width: 2px; }
-.funnel-count { font-family: 'Geist Mono', monospace; font-size: 12px; min-width: 34px; text-align: right; font-weight: 400; color: var(--ink); }
+.funnel-bar { height: 100%; border-radius: 5px; transition: width .6s ease; display: flex; align-items: center; padding-left: 10px; font-family: Geist Mono, monospace; font-size: 10px; color: rgba(255,255,255,.7); min-width: 2px; }
+.funnel-count { font-family: Geist Mono, monospace; font-size: 12px; min-width: 34px; text-align: right; font-weight: 400; color: var(--ink); }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
 .motivos-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
 .motivos-card h3 { font-size: 11px; font-weight: 600; margin-bottom: 12px; color: var(--ink2); }
 .motivo-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
 .motivo-item:last-child { border-bottom: none; }
 .motivo-name { color: var(--ink2); }
-.motivo-pill { font-family: 'Geist Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+.motivo-pill { font-family: Geist Mono, monospace; font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
 .pill-green { background: var(--sage-dim); color: var(--sage); }
 .pill-red { background: var(--rose-dim); color: var(--rose); }
 .monto-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 20px; margin-bottom: 18px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
 .monto-item { display: flex; flex-direction: column; gap: 4px; }
 .monto-label { font-size: 9.5px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .5px; }
-.monto-value { font-family: 'Geist Mono', monospace; font-size: 21px; font-weight: 400; color: var(--ink); }
+.monto-value { font-family: Geist Mono, monospace; font-size: 21px; font-weight: 400; color: var(--ink); }
 .log-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 28px; }
 table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
 th { background: var(--surface2); padding: 9px 13px; text-align: left; font-size: 9.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--ink3); font-weight: 600; border-bottom: 1px solid var(--border); }
@@ -262,20 +262,20 @@ tr:hover td { background: rgba(201,144,58,.03); }
 .agent-stats { display: flex; flex-direction: column; gap: 6px; }
 .agent-stat-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
 .agent-stat-label { color: var(--ink2); }
-.agent-stat-val { font-family: 'Geist Mono', monospace; font-weight: 400; color: var(--ink); }
+.agent-stat-val { font-family: Geist Mono, monospace; font-weight: 400; color: var(--ink); }
 .agent-bar-wrap { height: 3px; background: var(--border); border-radius: 99px; margin-top: 10px; overflow: hidden; }
 .agent-bar { height: 100%; border-radius: 99px; transition: width .6s ease; opacity: .7; }
 
 /* ── USER BADGE ── */
 .user-badge { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 5px 12px; }
-.user-badge select { background: transparent; border: none; color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; outline: none; }
+.user-badge select { background: transparent; border: none; color: var(--ink); font-family: DM Sans, sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; outline: none; }
 
 /* ── EXPORT BUTTON ── */
 .btn-export {
   display: inline-flex; align-items: center; gap: 7px;
   background: var(--surface2); border: 1px solid var(--border2);
   border-radius: 9px; padding: 7px 15px;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: DM Sans, sans-serif; font-size: 13px; font-weight: 600;
   color: var(--ink2); cursor: pointer; transition: all .15s;
 }
 .btn-export:hover { background: var(--surface3); color: var(--ink); border-color: var(--amber); }
@@ -289,7 +289,7 @@ tr:hover td { background: rgba(201,144,58,.03); }
 /* ── DUPLICATE BADGE ── */
 .dup-badge {
   display: inline-flex; align-items: center; gap: 4px;
-  font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 600;
+  font-family: Geist Mono, monospace; font-size: 9px; font-weight: 600;
   background: rgba(192,114,85,.18); color: var(--terra);
   border: 1px solid rgba(192,114,85,.3); border-radius: 99px;
   padding: 1px 7px; margin-left: 6px; vertical-align: middle;
@@ -300,7 +300,7 @@ tr:hover td { background: rgba(201,144,58,.03); }
 .toast {
   background: var(--surface2); border: 1px solid var(--border2);
   border-radius: 10px; padding: 10px 16px;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink);
+  font-family: DM Sans, sans-serif; font-size: 13px; color: var(--ink);
   box-shadow: 0 8px 24px rgba(0,0,0,.35);
   animation: toastIn .2s ease; display: flex; align-items: center; gap: 8px;
   max-width: 300px;
@@ -321,7 +321,7 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
 .hl { background: rgba(201,144,58,.25); border-radius: 2px; }
 
 /* ── KEYBOARD SHORTCUT HINT ── */
-.kbd { display: inline-block; font-family: 'Geist Mono', monospace; font-size: 9px; padding: 1px 5px; border-radius: 4px; background: var(--surface3); border: 1px solid var(--border2); color: var(--ink3); margin-left: 4px; }
+.kbd { display: inline-block; font-family: Geist Mono, monospace; font-size: 9px; padding: 1px 5px; border-radius: 4px; background: var(--surface3); border: 1px solid var(--border2); color: var(--ink3); margin-left: 4px; }
 
 /* ── STICKY PROGRESS BAR ── */
 .sticky-progress { position: sticky; top: 0; z-index: 10; background: var(--bg); padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
@@ -334,12 +334,12 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
   display: none;
 }
 .agent-day-banner.visible { display: block; }
-.agent-day-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; margin-bottom: 14px; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.agent-day-title { font-family: Fraunces, serif; font-size: 16px; font-weight: 600; margin-bottom: 14px; color: var(--ink); display: flex; align-items: center; gap: 8px; }
 .agent-day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
 .agent-day-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
 .agent-day-label { font-size: 9.5px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
-.agent-day-val { font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 400; color: var(--ink); line-height: 1.1; }
-.agent-day-sub { font-family: 'Geist Mono', monospace; font-size: 10px; color: var(--ink2); margin-top: 3px; }
+.agent-day-val { font-family: Geist Mono, monospace; font-size: 22px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+.agent-day-sub { font-family: Geist Mono, monospace; font-size: 10px; color: var(--ink2); margin-top: 3px; }
 .commission-glow { color: var(--gold) !important; }
 .recup-glow { color: var(--sage) !important; }
 
@@ -367,7 +367,7 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
   header, .tabs, .toolbar, .panel, .toast-container, .modal-overlay, .export-row, .danger-zone, #panel-llamadas, button, .btn-export { display: none !important; }
   .print-report { display: block !important; }
   .pr-page { page-break-after: always; padding: 20px; }
-  .pr-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .pr-title { font-family: Fraunces, serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
   .pr-sub { font-size: 11px; color: #666; margin-bottom: 20px; }
   .pr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
   .pr-stat { border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
@@ -402,7 +402,7 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
           <div class="subtitle" id="headerSubtitle">Cargando...</div>
         </div>
       </div>
-      <div id="syncStatus" style="font-family:'Geist Mono',monospace;font-size:11px;display:flex;align-items:center;gap:8px"><span style="color:var(--ink2)">⏳ Cargando...</span></div>
+      <div id="syncStatus" style="font-family:"Geist Mono",monospace;font-size:11px;display:flex;align-items:center;gap:8px"><span style="color:var(--ink2)">⏳ Cargando...</span></div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <div class="user-badge">
           <div class="agent-avatar" id="agentAvatar" style="background:linear-gradient(135deg,var(--amber),var(--terra));width:26px;height:26px;font-size:11px">?</div>
@@ -430,11 +430,11 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
       </div>
       <!-- Mini agent strip -->
       <div id="agentMiniStrip" style="display:none;align-items:center;gap:18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:10px 18px;flex-wrap:wrap">
-        <span style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--ink2)">☀️ hoy</span>
-        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--ink)">📞 <b id="ms-calls">0</b> llamadas</span>
-        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--sage)">✅ <b id="ms-recup">0</b> recup.</span>
-        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--sage)"><b id="ms-monto">$0</b></span>
-        <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);font-weight:700">💰 <b id="ms-com">$0</b></span>
+        <span style="font-family:"Geist Mono",monospace;font-size:10px;color:var(--ink2)">☀️ hoy</span>
+        <span style="font-family:"Geist Mono",monospace;font-size:11px;color:var(--ink)">📞 <b id="ms-calls">0</b> llamadas</span>
+        <span style="font-family:"Geist Mono",monospace;font-size:11px;color:var(--sage)">✅ <b id="ms-recup">0</b> recup.</span>
+        <span style="font-family:"Geist Mono",monospace;font-size:11px;color:var(--sage)"><b id="ms-monto">$0</b></span>
+        <span style="font-family:"Geist Mono",monospace;font-size:12px;color:var(--gold);font-weight:700">💰 <b id="ms-com">$0</b></span>
       </div>
     </div>
     <div class="toolbar">
@@ -542,11 +542,11 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
     <div style="background:linear-gradient(135deg,rgba(201,144,58,.12),rgba(91,244,194,.08));border:1px solid var(--amber);border-radius:14px;padding:20px 24px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
       <div>
         <div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">💰 Total recuperado final (monto real pagado)</div>
-        <div id="m-total-final" style="font-size:34px;font-weight:800;color:var(--sage);font-family:'Geist Mono',monospace">$0</div>
+        <div id="m-total-final" style="font-size:34px;font-weight:800;color:var(--sage);font-family:"Geist Mono",monospace">$0</div>
       </div>
       <div style="text-align:right">
         <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Comisión total equipo (5%)</div>
-        <div id="m-commission" style="font-size:22px;font-weight:800;color:var(--warning);font-family:'Geist Mono',monospace">$0</div>
+        <div id="m-commission" style="font-size:22px;font-weight:800;color:var(--warning);font-family:"Geist Mono",monospace">$0</div>
       </div>
     </div>
 
@@ -596,8 +596,8 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
       <div id="modalProduct" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"></div>
     </div>
     <div id="agentWarning" style="display:none;background:rgba(244,91,140,.1);border:1px solid rgba(244,91,140,.4);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--rose)">⚠️ Debes elegir un agente antes de guardar</span>
-      <select onchange="selectAgentFromModal(this.value)" style="background:var(--surface);border:1px solid var(--rose);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;cursor:pointer;outline:none">
+      <span style="font-family:"Geist Mono",monospace;font-size:11px;color:var(--rose)">⚠️ Debes elegir un agente antes de guardar</span>
+      <select onchange="selectAgentFromModal(this.value)" style="background:var(--surface);border:1px solid var(--rose);border-radius:8px;color:var(--text);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;padding:5px 10px;cursor:pointer;outline:none">
         <option value="">— Elige —</option>
         <option value="Natt">Natt</option>
         <option value="Raul">Raul</option>
@@ -633,11 +633,11 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
         </div>
         <div class="form-group" style="margin-top:12px">
           <label class="field-label">N° Pedido Shopify</label>
-          <input id="orderNumber" type="text" placeholder="Ej: #38001234" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+          <input id="orderNumber" type="text" placeholder="Ej: #38001234" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-family:"DM Sans",sans-serif;font-size:13px;outline:none">
         </div>
         <div class="form-group">
           <label class="field-label">Monto pagado (CLP)</label>
-          <input id="paidAmount" type="number" placeholder="Ej: 165990" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+          <input id="paidAmount" type="number" placeholder="Ej: 165990" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-family:"DM Sans",sans-serif;font-size:13px;outline:none">
         </div>
         <div class="form-group">
           <label class="field-label">Estado de pago del pedido</label>
@@ -681,7 +681,7 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
 
 
 // ── BACKEND CONFIG ────────────────────────────────────────
-const BACKEND_URL = 'https://carritos-calls-backend.vercel.app';
+const BACKEND_URL = '';
 
 // ── POLLING ──────────────────────────────────────────────
 let pollingTimer = null;
@@ -743,6 +743,10 @@ async function loadClientsFromAPI(silent = false) {
     console.error('[API]', err);
     showSyncStatus('error', err.message);
     if (!silent) showToast('Error al cargar datos: ' + err.message, 'error');
+    // Show helpful message in grid
+    if (CLIENTS.length === 0) {
+      document.getElementById('clientGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px;color:var(--rose)"><div style="font-size:28px;margin-bottom:8px">🔴</div><div style="font-size:13px">Error al conectar con Shopify<br><span style="font-size:11px;color:var(--ink2)">Revisa tu conexión e intenta de nuevo</span></div><button onclick="loadClientsFromAPI(false)" style="margin-top:14px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--ink);padding:8px 18px;cursor:pointer;font-size:13px">↻ Reintentar</button></div>';
+    }
   } finally {
     isLoading = false;
     // Schedule next poll
@@ -758,9 +762,9 @@ function showSyncStatus(state, msg = '') {
     el.innerHTML = '<span style="color:var(--ink2)">⏳ Sincronizando con Shopify...</span>';
   } else if (state === 'ok') {
     const t = lastLoadedAt ? lastLoadedAt.toLocaleTimeString('es-CL', {hour:'2-digit', minute:'2-digit'}) : '';
-    el.innerHTML = `<span style="color:var(--sage)">🟢 Actualizado ${t}</span> <button onclick="loadClientsFromAPI(false)" style="background:none;border:1px solid var(--border);border-radius:5px;color:var(--ink2);font-size:10px;padding:2px 8px;cursor:pointer;font-family:'DM Sans',sans-serif">↻ Actualizar</button>`;
+    el.innerHTML = '<span style="color:var(--sage)">🟢 Actualizado ' + t + '</span> <button onclick="loadClientsFromAPI(false)" style="background:none;border:1px solid var(--border);border-radius:5px;color:var(--ink2);font-size:10px;padding:2px 8px;cursor:pointer;font-family:"DM Sans",sans-serif">↻ Actualizar</button>';
   } else if (state === 'error') {
-    el.innerHTML = `<span style="color:var(--rose)">🔴 Error al sincronizar</span> <button onclick="loadClientsFromAPI(false)" style="background:none;border:1px solid var(--border);border-radius:5px;color:var(--ink2);font-size:10px;padding:2px 8px;cursor:pointer;font-family:'DM Sans',sans-serif">↻ Reintentar</button>`;
+    el.innerHTML = '<span style="color:var(--rose)">🔴 Error al sincronizar</span> <button onclick="loadClientsFromAPI(false)" style="background:none;border:1px solid var(--border);border-radius:5px;color:var(--ink2);font-size:10px;padding:2px 8px;cursor:pointer;font-family:"DM Sans",sans-serif">↻ Reintentar</button>';
   }
 }
 
@@ -938,15 +942,15 @@ function renderMonthlyTable(){
   tbody.innerHTML = history.map(h=>`
     <tr>
       <td style="font-weight:600;color:var(--ink)">${h.mesLabel}</td>
-      <td style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--ink2)">${h.exportDate.slice(0,10)}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--amber)">${h.totalLlamadas}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--sage)">${h.recuperados}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--sage)">${h.pedidosPagados}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--sage);font-weight:600">${fmt(h.montoPagado)}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--rose)">${h.pedidosAnulados}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--rose)">${fmt(h.montoAnulado)}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--amber);font-weight:700">${fmt(h.neto)}</td>
-      <td style="font-family:'Geist Mono',monospace;color:var(--gold);font-weight:700">${fmt(h.comision)}</td>
+      <td style="font-family:"Geist Mono",monospace;font-size:10px;color:var(--ink2)">${h.exportDate.slice(0,10)}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--amber)">${h.totalLlamadas}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--sage)">${h.recuperados}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--sage)">${h.pedidosPagados}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--sage);font-weight:600">${fmt(h.montoPagado)}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--rose)">${h.pedidosAnulados}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--rose)">${fmt(h.montoAnulado)}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--amber);font-weight:700">${fmt(h.neto)}</td>
+      <td style="font-family:"Geist Mono",monospace;color:var(--gold);font-weight:700">${fmt(h.comision)}</td>
       <td><button onclick="deleteMonthlyRow(${h.id})" style="background:rgba(192,96,96,.1);border:1px solid rgba(192,96,96,.3);color:var(--rose);border-radius:6px;padding:3px 8px;font-size:10px;cursor:pointer">✕</button></td>
     </tr>
   `).join('');
@@ -1072,7 +1076,7 @@ function updateCharts(vals){
     options:{
       responsive:true, maintainAspectRatio:false,
       plugins:{
-        legend:{position:'right',labels:{color:'#9c9080',font:{family:'Geist Mono',size:10},boxWidth:10,padding:10}},
+        legend:{position:'right',labels:{color:'#9c9080',font:{family:"Geist Mono",size:10},boxWidth:10,padding:10}},
         tooltip:{callbacks:{label:c=>' '+c.label+': '+c.raw}}
       },
       cutout:'62%'
@@ -1095,8 +1099,8 @@ function updateCharts(vals){
       responsive:true, maintainAspectRatio:false, indexAxis:'y',
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+Math.round(c.raw).toLocaleString('es-CL')}}},
       scales:{
-        x:{ticks:{color:'#5c5448',font:{family:'Geist Mono',size:9},callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'#38332a'},border:{display:false}},
-        y:{ticks:{color:'#9c9080',font:{family:'DM Sans',size:11}},grid:{display:false},border:{display:false}}
+        x:{ticks:{color:'#5c5448',font:{family:"Geist Mono",size:9},callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'#38332a'},border:{display:false}},
+        y:{ticks:{color:'#9c9080',font:{family:"DM Sans",size:11}},grid:{display:false},border:{display:false}}
       }
     }
   });
@@ -1182,9 +1186,9 @@ function renderCards(){
       </div>
       <div class="client-footer">
         <span class="status-badge ${badgeClass}">${badgeLabel}</span>
-        ${(()=>{const h=getAgeHours(c.created);const badge=h<=24?'⚡ <24h':h<=48?'🕐 24-48h':'📅 '+Math.floor(h/24)+'d';const col=h<=24?'var(--success)':h<=48?'var(--warning)':'var(--text2)';return `<span style="font-family:'Geist Mono',monospace;font-size:10px;color:${col}">${badge}</span>`;})()}
-        ${call.agent?`<span style="font-family:'Geist Mono',monospace;font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(0,0,0,.3);color:${AGENT_COLORS[call.agent]||'var(--text2)'}">${call.agent}</span>`:''}
-        ${call.payStatus?`<span style="font-family:'Geist Mono',monospace;font-size:10px;padding:1px 6px;border-radius:5px;color:${call.payStatus==='Pagado'?'var(--success)':call.payStatus==='Pendiente'?'var(--warning)':call.payStatus==='Anulado'?'var(--rose)':'var(--text2)'}">${call.payStatus==='Pagado'?'✅ Pagado':call.payStatus==='Pendiente'?'⏳ Pendiente':call.payStatus==='Anulado'?'❌ Anulado':'🔕 No responde'}</span>`:''}
+        ${(()=>{const h=getAgeHours(c.created);const badge=h<=24?'⚡ <24h':h<=48?'🕐 24-48h':'📅 '+Math.floor(h/24)+'d';const col=h<=24?'var(--success)':h<=48?'var(--warning)':'var(--text2)';return `<span style="font-family:"Geist Mono",monospace;font-size:10px;color:${col}">${badge}</span>`;})()}
+        ${call.agent?`<span style="font-family:"Geist Mono",monospace;font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(0,0,0,.3);color:${AGENT_COLORS[call.agent]||'var(--text2)'}">${call.agent}</span>`:''}
+        ${call.payStatus?`<span style="font-family:"Geist Mono",monospace;font-size:10px;padding:1px 6px;border-radius:5px;color:${call.payStatus==='Pagado'?'var(--success)':call.payStatus==='Pendiente'?'var(--warning)':call.payStatus==='Anulado'?'var(--rose)':'var(--text2)'}">${call.payStatus==='Pagado'?'✅ Pagado':call.payStatus==='Pendiente'?'⏳ Pendiente':call.payStatus==='Anulado'?'❌ Anulado':'🔕 No responde'}</span>`:''}
         <span class="cart-amount">${fmt(c.total)}</span>
       </div>`;
     div.onclick=()=>openModal(c.id);
@@ -1394,7 +1398,7 @@ function updateDashboard(){
   logEl.innerHTML=logCalls.map((c,i)=>{
     const call=calls[c.id];
     const statusLabel=call.outcome?`<span class="status-badge b-${call.outcome}">${call.outcome==='recuperado'?'✅ Recuperado':'❌ Rechazó'}</span>`:`<span class="status-badge b-${call.status}">${call.status}</span>`;
-    return`<tr><td style="color:var(--text2)">${i+1}</td><td style="font-weight:600">${c.name}</td><td style="font-family:'Geist Mono',monospace;font-size:10px">${c.phone}</td><td style="font-family:'Geist Mono',monospace;color:var(--amber)">${fmt(c.total)}</td><td style="font-size:10px;color:var(--text2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.products[0]?.name||''}</td><td>${statusLabel}</td><td style="font-size:10px;color:var(--text2)">${call.motivo||'—'}</td><td style="font-size:10px;color:var(--text2);max-width:120px">${call.notas||'—'}</td></tr>`;
+    return`<tr><td style="color:var(--text2)">${i+1}</td><td style="font-weight:600">${c.name}</td><td style="font-family:"Geist Mono",monospace;font-size:10px">${c.phone}</td><td style="font-family:"Geist Mono",monospace;color:var(--amber)">${fmt(c.total)}</td><td style="font-size:10px;color:var(--text2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.products[0]?.name||''}</td><td>${statusLabel}</td><td style="font-size:10px;color:var(--text2)">${call.motivo||'—'}</td><td style="font-size:10px;color:var(--text2);max-width:120px">${call.notas||'—'}</td></tr>`;
   }).join('');
 
   // ── Agent ranking ─────────────────────────────────────
@@ -1461,7 +1465,7 @@ if(currentAgent){
   selectAgent(currentAgent);
 }
 // Show empty state while loading
-document.getElementById('clientGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px"><div style="font-size:32px;margin-bottom:12px">⏳</div><div style="font-family:'Geist Mono',monospace;font-size:13px;color:var(--ink2)">Conectando con Shopify...<br><span style="font-size:11px;color:var(--ink3)">Cargando carritos abandonados en tiempo real</span></div></div>';
+document.getElementById('clientGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px"><div style="font-size:32px;margin-bottom:12px">⏳</div><div style="font-family:"Geist Mono",monospace;font-size:13px;color:var(--ink2)">Conectando con Shopify...<br><span style="font-size:11px;color:var(--ink3)">Cargando carritos abandonados en tiempo real</span></div></div>';
 renderMonthlyTable();
 // Load from API on start
 loadClientsFromAPI(false);
