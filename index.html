@@ -1181,7 +1181,7 @@ function renderCards(){
     div.dataset.id=c.id;div.dataset.name=c.name.toLowerCase();
     div.dataset.email=c.email.toLowerCase();div.dataset.phone=c.phone;
     div.dataset.status=call.outcome||call.status||'pendiente';
-    div.dataset.age=getAgeHours(c.updated||c.created).toFixed(1);
+    div.dataset.age=getAgeHours(c.created).toFixed(1);
     div.dataset.paystatus=call.payStatus||'';
     div.dataset.total=c.total||0;
     div.innerHTML=`
@@ -1195,7 +1195,7 @@ function renderCards(){
       </div>
       <div class="client-footer">
         <span class="status-badge ${badgeClass}">${badgeLabel}</span>
-        ${(()=>{const h=getAgeHours(c.updated||c.created);const badge=h<=24?'⚡ <24h':h<=48?'🕐 24-48h':'📅 '+Math.floor(h/24)+'d';const col=h<=24?'var(--success)':h<=48?'var(--warning)':'var(--text2)';return `<span style="font-family:"Geist Mono",monospace;font-size:10px;color:${col}">${badge}</span>`;})()}
+        ${(()=>{const h=getAgeHours(c.created);const badge=h<=24?'⚡ <24h':h<=48?'🕐 24-48h':'📅 '+Math.floor(h/24)+'d';const col=h<=24?'var(--success)':h<=48?'var(--warning)':'var(--text2)';return `<span style="font-family:"Geist Mono",monospace;font-size:10px;color:${col}">${badge}</span>`;})()}
         ${call.agent?`<span style="font-family:"Geist Mono",monospace;font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(0,0,0,.3);color:${AGENT_COLORS[call.agent]||'var(--text2)'}">${call.agent}</span>`:''}
         ${call.payStatus?`<span style="font-family:"Geist Mono",monospace;font-size:10px;padding:1px 6px;border-radius:5px;color:${call.payStatus==='Pagado'?'var(--success)':call.payStatus==='Pendiente'?'var(--warning)':call.payStatus==='Anulado'?'var(--rose)':'var(--text2)'}">${call.payStatus==='Pagado'?'✅ Pagado':call.payStatus==='Pendiente'?'⏳ Pendiente':call.payStatus==='Anulado'?'❌ Anulado':'🔕 No responde'}</span>`:''}
         <span class="cart-amount">${fmt(c.total)}</span>
