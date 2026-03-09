@@ -461,6 +461,13 @@ th.sort-desc::after { content: ' ↓'; opacity: 1; color: var(--amber); }
         <option value="Anulado">❌ Anulado</option>
         <option value="No responde">🔕 No responde</option>
       </select>
+      <div style="display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0 10px;height:36px">
+        <span style="font-size:11px;color:var(--ink3);white-space:nowrap">Monto mín.</span>
+        <span style="font-size:11px;color:var(--ink3)">$</span>
+        <input type="number" id="filterMonto" placeholder="0" min="0" step="1000"
+          style="width:90px;background:transparent;border:none;outline:none;color:var(--ink);font-size:13px;font-family:Geist Mono,monospace;padding:0"
+          oninput="filterCards()">
+      </div>
       <button class="btn-export" onclick="exportCSV()" title="Exportar llamadas a CSV">⬇️ CSV</button>
       <span class="results-count" id="resultsCount"></span>
     </div>
@@ -1175,6 +1182,7 @@ function renderCards(){
     div.dataset.status=call.outcome||call.status||'pendiente';
     div.dataset.age=getAgeHours(c.created).toFixed(1);
     div.dataset.paystatus=call.payStatus||'';
+    div.dataset.total=c.total||0;
     div.innerHTML=`
       <div class="client-header"><span class="client-name">${c.name}${dups.has(c.id)?'<span class="dup-badge">⚠️ dup</span>':''}</span><span class="client-num">#${i+1}</span></div>
       <div class="client-info">📱 ${c.phone}</div>
@@ -1213,6 +1221,7 @@ function filterCards(){
   const fStatus=document.getElementById('filterStatus').value;
   const fAge=document.getElementById('filterAge').value;
   const fPay=document.getElementById('filterPay').value;
+  const fMonto=parseInt(document.getElementById('filterMonto').value||'0',10)||0;
   let visible=0;
   document.querySelectorAll('.client-card').forEach(card=>{
     const ms=!q||(card.dataset.name.includes(q)||card.dataset.email.includes(q)||card.dataset.phone.includes(q));
@@ -1220,7 +1229,8 @@ function filterCards(){
     const hours=parseFloat(card.dataset.age||9999);
     const md=fAge==='all'||(fAge==='24h'&&hours<=24)||(fAge==='24-48h'&&hours>24&&hours<=48)||(fAge==='+48h'&&hours>48);
     const mp=fPay==='all'||card.dataset.paystatus===fPay;
-    const show=ms&&mf&&md&&mp;card.classList.toggle('hidden',!show);if(show)visible++;
+    const mm=!fMonto||parseInt(card.dataset.total||'0',10)>=fMonto;
+    const show=ms&&mf&&md&&mp&&mm;card.classList.toggle('hidden',!show);if(show)visible++;
   });
   document.getElementById('resultsCount').textContent=`Mostrando ${visible} de ${CLIENTS.length}`;
 }
