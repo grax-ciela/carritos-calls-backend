@@ -1,10 +1,7 @@
 const { shopifyGet, normalizePhone } = require('../lib/shopify');
 
-const MONTO_MINIMO = 100000;
-
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
-
   try {
     const since = new Date();
     since.setDate(since.getDate() - 30);
@@ -30,9 +27,7 @@ module.exports = async (req, res) => {
       .filter(c => {
         const phone = c.phone || c.billing_address?.phone || c.shipping_address?.phone || '';
         const email = (c.email || '').toLowerCase().trim();
-        const total = parseFloat(c.total_price || '0');
         return phone.trim().length > 0
-          && total >= MONTO_MINIMO
           && !paidEmails.has(email)
           && !paidPhones.has(normalizePhone(phone));
       })
@@ -42,24 +37,23 @@ module.exports = async (req, res) => {
           c.billing_address?.first_name || c.shipping_address?.first_name || '',
           c.billing_address?.last_name  || c.shipping_address?.last_name  || '',
         ].join(' ').trim() || c.email || 'Sin nombre';
-
         return {
-          id: c.id,
-          token: c.token,
+          id:       c.id,
+          token:    c.token,
           name,
-          email: c.email || '',
+          email:    c.email || '',
           phone,
-          total: Math.round(parseFloat(c.total_price)),
-          created: c.created_at,
-          updated: c.updated_at,
+          total:    Math.round(parseFloat(c.total_price || '0')),
+          created:  c.created_at,
+          updated:  c.updated_at,
           products: (c.line_items || []).map(li => ({
-            qty: li.quantity,
-            name: li.title + (li.variant_title ? ` — ${li.variant_title}` : ''),
-            price: Math.round(parseFloat(li.price)),
+            qty:   li.quantity,
+            name:  li.title + (li.variant_title ? ` — ${li.variant_title}` : ''),
+            price: Math.round(parseFloat(li.price || '0')),
           })),
         };
       })
-      .sort((a, b) => b.total - a.total);
+      .sort((a, b) => new Date(b.updated) - new Date(a.updated));
 
     const seenEmail = new Set();
     const seenPhone = new Set();
@@ -78,7 +72,6 @@ module.exports = async (req, res) => {
       updated_at: new Date().toISOString(),
       clients: unique,
     });
-
   } catch (err) {
     console.error('[/api/abandoned]', err);
     return res.status(500).json({ ok: false, error: err.message });
