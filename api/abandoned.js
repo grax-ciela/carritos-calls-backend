@@ -3,15 +3,15 @@ const { shopifyGet, normalizePhone } = require('../lib/shopify');
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   try {
-    const since = new Date();
-    since.setDate(since.getDate() - 30);
-
+    // Fetch ALL open checkouts (no date filter) to catch everything Shopify has
     const checkoutData = await shopifyGet('/admin/api/2026-01/checkouts.json', {
       status: 'open',
-      created_at_min: since.toISOString(),
       limit: 250,
     });
 
+    // For de-duplication: get paid orders from last 60 days
+    const since = new Date();
+    since.setDate(since.getDate() - 60);
     const ordersData = await shopifyGet('/admin/api/2026-01/orders.json', {
       status: 'any',
       financial_status: 'paid',
@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
           updated:  c.updated_at,
           products: (c.line_items || []).map(li => ({
             qty:   li.quantity,
-            name:  li.title + (li.variant_title ? ' — ' + li.variant_title : ''),
+            name:  li.title + (li.variant_title ? ' - ' + li.variant_title : ''),
             price: Math.round(parseFloat(li.price || '0')),
           })),
         };
@@ -69,6 +69,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       ok: true,
       total: unique.length,
+      raw_total: checkoutData.checkouts?.length || 0,
       updated_at: new Date().toISOString(),
       clients: unique,
     });
