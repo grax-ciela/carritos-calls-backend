@@ -8,14 +8,14 @@ module.exports = async (req, res) => {
 
     const checkoutData = await shopifyGet('/admin/api/2026-01/checkouts.json', {
       status: 'open',
-      updated_at_min: since.toISOString(),
+      created_at_min: since.toISOString(),
       limit: 250,
     });
 
     const ordersData = await shopifyGet('/admin/api/2026-01/orders.json', {
       status: 'any',
       financial_status: 'paid',
-      updated_at_min: since.toISOString(),
+      created_at_min: since.toISOString(),
       limit: 250,
       fields: 'id,email,phone',
     });
@@ -48,12 +48,12 @@ module.exports = async (req, res) => {
           updated:  c.updated_at,
           products: (c.line_items || []).map(li => ({
             qty:   li.quantity,
-            name:  li.title + (li.variant_title ? ` — ${li.variant_title}` : ''),
+            name:  li.title + (li.variant_title ? ' — ' + li.variant_title : ''),
             price: Math.round(parseFloat(li.price || '0')),
           })),
         };
       })
-      .sort((a, b) => new Date(b.updated) - new Date(a.updated));
+      .sort((a, b) => new Date(b.created) - new Date(a.created));
 
     const seenEmail = new Set();
     const seenPhone = new Set();
