@@ -721,6 +721,7 @@ async function loadClientsFromAPI(silent = false) {
       phone: c.phone,
       total: c.total,
       created: c.created ? c.created.replace('T',' ').slice(0,16) : '',
+      updated: c.updated ? c.updated.replace('T',' ').slice(0,16) : '',
       products: (c.products || []).map(p => ({
         qty: String(p.qty),
         name: p.name,
