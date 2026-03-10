@@ -5,9 +5,6 @@ const TOKEN = process.env.SHOPIFY_TOKEN;
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   try {
-    const since = new Date();
-    since.setDate(since.getDate() - 30);
-
     const gqlRes = await fetch('https://' + SHOP + '/admin/api/2026-01/graphql.json', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOKEN },
@@ -15,10 +12,10 @@ module.exports = async (req, res) => {
         abandonedCheckouts(first: 5, sortKey: CREATED_AT, reverse: true) {
           pageInfo { hasNextPage endCursor }
           nodes {
-            id createdAt updatedAt completedAt email phone
+            id createdAt updatedAt completedAt
             billingAddress { firstName lastName phone }
             shippingAddress { firstName lastName phone }
-            customer { firstName lastName email }
+            customer { firstName lastName email phone }
             lineItems(first: 5) { nodes { title quantity variantTitle } }
           }
         }
