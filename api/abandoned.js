@@ -4,20 +4,17 @@ const { normalizePhone, shopifyGet } = require('../lib/shopify');
 const SHOP  = process.env.SHOPIFY_SHOP;
 const TOKEN = process.env.SHOPIFY_TOKEN;
 
-const GQL_QUERY = `
+const QUERY = `
   query GetAbandonedCheckouts($first: Int!, $after: String) {
     abandonedCheckouts(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
       pageInfo { hasNextPage endCursor }
       nodes {
-        id
-        createdAt
-        updatedAt
-        completedAt
-        abandonedCheckoutUrl
+        id createdAt updatedAt completedAt email phone
+        totalPriceSet { shopMoney { amount } }
         billingAddress  { firstName lastName phone }
         shippingAddress { firstName lastName phone }
         customer { firstName lastName email }
-        lineItems(first: 10) {
+        lineItems(first: 20) {
           nodes { title quantity variantTitle }
         }
       }
@@ -25,60 +22,61 @@ const GQL_QUERY = `
   }
 `;
 
-async function fetchAllCheckouts() {
-  let after = null, hasNextPage = true;
-  const all = [];
-  while (hasNextPage) {
-    const res = await fetch('https://' + SHOP + '/admin/api/2026-01/graphql.json', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOKEN },
-      body: JSON.stringify({ query: GQL_QUERY, variables: { first: 100, after } }),
-    });
-    const json = await res.json();
-    const conn = json?.data?.abandonedCheckouts;
-    if (!conn) throw new Error('GraphQL error: ' + JSON.stringify(json.errors));
-    all.push(...conn.nodes);
-    hasNextPage = conn.pageInfo.hasNextPage;
-    after = conn.pageInfo.endCursor;
-  }
-  return all;
+async function gqlFetch(variables) {
+  const r = await fetch('https://' + SHOP + '/admin/api/2026-01/graphql.json', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOKEN },
+    body: JSON.stringify({ query: QUERY, variables }),
+  });
+  return r.json();
 }
 
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   try {
-    const checkouts = await fetchAllCheckouts();
+    let after = null, hasNextPage = true;
+    const allCheckouts = [];
 
-    // Get paid orders to exclude already-converted customers
+    while (hasNextPage) {
+      const data = await gqlFetch({ first: 100, after });
+      const conn = data?.data?.abandonedCheckouts;
+      if (!conn) break;
+      allCheckouts.push(...(conn.nodes || []));
+      hasNextPage = conn.pageInfo.hasNextPage;
+      after = conn.pageInfo.endCursor;
+    }
+
     const since = new Date();
     since.setDate(since.getDate() - 60);
     const ordersData = await shopifyGet('/admin/api/2026-01/orders.json', {
       status: 'any', financial_status: 'paid',
       created_at_min: since.toISOString(), limit: 250, fields: 'id,email,phone',
     });
+
     const paidEmails = new Set((ordersData.orders || []).map(o => (o.email||'').toLowerCase().trim()).filter(Boolean));
     const paidPhones = new Set((ordersData.orders || []).map(o => normalizePhone(o.phone)).filter(Boolean));
 
-    const filtered = checkouts
+    const filtered = allCheckouts
       .filter(c => {
         if (c.completedAt) return false;
-        const phone = c.shippingAddress?.phone || c.billingAddress?.phone || '';
-        const email = (c.customer?.email || '').toLowerCase().trim();
+        const phone = c.phone || c.shippingAddress?.phone || c.billingAddress?.phone || '';
+        const email = (c.email || c.customer?.email || '').toLowerCase().trim();
         return phone.trim().length > 0
           && !paidEmails.has(email)
           && !paidPhones.has(normalizePhone(phone));
       })
       .map(c => {
-        const phone = c.shippingAddress?.phone || c.billingAddress?.phone || '';
-        const fn = c.customer?.firstName || c.shippingAddress?.firstName || c.billingAddress?.firstName || '';
-        const ln = c.customer?.lastName  || c.shippingAddress?.lastName  || c.billingAddress?.lastName  || '';
+        const phone = c.phone || c.shippingAddress?.phone || c.billingAddress?.phone || '';
+        const fn = c.shippingAddress?.firstName || c.billingAddress?.firstName || c.customer?.firstName || '';
+        const ln = c.shippingAddress?.lastName  || c.billingAddress?.lastName  || c.customer?.lastName  || '';
+        const email = c.email || c.customer?.email || '';
         return {
           id:      c.id.replace('gid://shopify/AbandonedCheckout/', ''),
-          token:   c.abandonedCheckoutUrl || c.id,
-          name:    (fn + ' ' + ln).trim() || c.customer?.email || 'Sin nombre',
-          email:   c.customer?.email || '',
+          token:   c.id,
+          name:    (fn + ' ' + ln).trim() || email || 'Sin nombre',
+          email,
           phone,
-          total:   0, // GraphQL no incluye totalPrice en esta query — se puede agregar
+          total:   Math.round(parseFloat(c.totalPriceSet?.shopMoney?.amount || '0')),
           created: c.createdAt,
           updated: c.updatedAt,
           products: (c.lineItems?.nodes || []).map(li => ({
